@@ -8,6 +8,13 @@ const routes = [
       { path: '/second', component: () => import('pages/SecondPage.vue') }
     ]
   },
+  {
+    path: '/yts',
+    component: () => import('layouts/MoviesLayout.vue'),
+    children: [
+      { path: '/yts', component: () => import('pages/Movie-Landing.vue')}
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it

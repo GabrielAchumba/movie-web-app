@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <q-page>
 
-    </div>
+    </q-page>
 </template>
 
 <script>
 export default {
-
+    
 }
 </script>
