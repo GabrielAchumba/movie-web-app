@@ -12,6 +12,7 @@
                     v-model="searchText"
                     :dense="true"
                     :placeholder="quickSearch"
+                    @change="onSearchMovie"
                     >
                     <template v-slot:prepend>
                     <q-avatar>
@@ -43,6 +44,7 @@
 </template>
 
 <script>
+import { get } from "../backend/omdd_services";
 export default {
     computed:{
         quickSearch(){
@@ -66,6 +68,14 @@ export default {
             }catch(e){
                 return ""
             }
+        },
+        async onSearchMovie (e){
+
+            const response = await get({
+                url: `?s=${e.target._value}&apikey=2711d78a`
+            })
+
+            console.log("response: ", response);
         },
         onResize(e) {
             const width = window.innerWidth;
