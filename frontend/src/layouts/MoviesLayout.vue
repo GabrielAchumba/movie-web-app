@@ -83,12 +83,9 @@ export default {
             context.isOnSearch = true;
             context.searchValue = e.target._value;
             const payload = {
-                url: "searchValue",
-                req: {
-                    searchValue: context.searchValue
-                }
+                url: "SearchValue/fetch",
             }
-            response = await post(payload) 
+            let response = await get(payload) 
             console.log("response: ", response);
             if(response.data){
                 context.mostRecentSearches = response.data.map((row) => {
@@ -101,7 +98,7 @@ export default {
             
             context.mostRecentSearches = filterList(context.searchValue);
             console.log("context.isOnSearch: ", context.isOnSearch);
-            let response = await get_omdb({
+            response = await get_omdb({
                 url: `?s=${e.target._value}&apikey=2711d78a`
             })
             context.isOnSearch = false;
@@ -127,7 +124,7 @@ export default {
                 });
                 console.log("movies: ", context.movies);
                 const payload = {
-                    url: "searchValue",
+                    url: "SearchValue/store",
                     req: {
                         searchValue: context.searchValue
                     }
@@ -148,8 +145,22 @@ export default {
             }
         },
     },
-    created() {
+    async created() {
       window.addEventListener("resize", this.onResize);
+      var context = this;
+        const payload = {
+            url: "SearchValue/fetch",
+        }
+        let response = await get(payload) 
+        console.log("response: ", response);
+        if(response.data){
+            context.mostRecentSearches = response.data.map((row) => {
+                return {
+                    id: row.id,
+                    title: row.searchValue
+                }
+            }) 
+        }
   },
   destroyed() {
       window.removeEventListener("resize", this.onResize);
