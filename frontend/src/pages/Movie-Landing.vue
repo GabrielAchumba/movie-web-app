@@ -14,6 +14,33 @@ export default {
       Introduction,
       Cards
     },
+    props:{
+      listOfObjects:{
+        type: Array,
+        default: () => []
+      }
+    },
+    watch:{
+      listOfObjects(newProp, oldProp){
+        var context = this;
+        if(newProp.length > 0){
+          context.cards = newProp.map((row) => {
+            return {
+              ...row,
+              style: `background-image: url(${row.bgImg});  width: 100%; height: 400px; max-width: 240px; object-fit: fill; background-repeat: no-repeat, repeat; background-position: center; background-size: cover;`
+            }
+          })
+        }else{
+          context.cards = context.cards.map((row) => {
+            return {
+              ...row,
+              style: `background-image: url(${context.img_jpg(row.bgImg)});  width: 100%; height: 400px; max-width: 240px; object-fit: fill; background-repeat: no-repeat, repeat; background-position: center; background-size: cover;`
+          }
+      })
+
+        }
+      }
+    },
     data(){
       return {
         cards:[

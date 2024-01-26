@@ -7,7 +7,7 @@ import axios from 'axios'
   ///opt/jdk-18
 
     const $http  = axios.create({ 
-        baseURL: (processEnvNOEENV == 'production') ? 'https://arcane-inlet-68126.herokuapp.com/' : 'http://localhost:3023/',
+        baseURL: (processEnvNOEENV == 'production') ? 'https://arcane-inlet-68126.herokuapp.com/' : 'http://localhost:3023/api/',
         headers: {'Content-Type': 'application/json'}
       })
 

@@ -1,7 +1,7 @@
 
 import { $omdbhttp } from 'boot/axios' 
 
-const get = async (payload) => {
+const get_omdb = async (payload) => {
 
   return new Promise((resolve, reject) => {
       
@@ -16,7 +16,7 @@ const get = async (payload) => {
   })
 }
 
-const remove = async (payload) => {
+const remove_omdb = async (payload) => {
 
   return new Promise((resolve, reject) => {
       
@@ -31,7 +31,7 @@ const remove = async (payload) => {
   })
 }
 
-const post = (payload) => {
+const post_omdb = (payload) => {
 
   return new Promise((resolve, reject) => {
       
@@ -46,7 +46,7 @@ const post = (payload) => {
  })
 }
 
-const put = (payload) => {
+const put_omdb = (payload) => {
 
   return new Promise((resolve, reject) => {
       
@@ -63,8 +63,8 @@ const put = (payload) => {
 
 
 export {
-  get,
-  remove,
-  post,
-  put,
+  get_omdb,
+  remove_omdb,
+  post_omdb,
+  put_omdb,
 }
